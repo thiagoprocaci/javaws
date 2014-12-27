@@ -4,6 +4,7 @@ package com.tbp.service.v1.webservice;
 import com.tbp.service.v1.FindPersonByExampleRequestType;
 import com.tbp.service.v1.FindPersonByExampleResponseType;
 import com.tbp.service.v1.PersonInterface;
+import com.tbp.service.v1.repository.PersonRepository;
 
 import javax.jws.WebService;
 
@@ -14,6 +15,9 @@ public class PersonSoap implements PersonInterface {
 
     @Override
     public FindPersonByExampleResponseType findPersonByExample(FindPersonByExampleRequestType findPersonByExampleRequest) {
-        return null;
+        PersonRepository repository = new PersonRepository();
+        FindPersonByExampleResponseType response = new FindPersonByExampleResponseType();
+        response.getPersonList().addAll(repository.findByExample(findPersonByExampleRequest.getPerson()));
+        return response;
     }
 }

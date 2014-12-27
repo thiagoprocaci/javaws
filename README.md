@@ -1,5 +1,8 @@
-javaws - Java contract first WS example
+javaws
 ======
+
+Java contract first web service example
+-----------
 
 ### Instalation Guide
 
@@ -9,7 +12,7 @@ javaws - Java contract first WS example
 * Set environment variable MAVEN_HOME
 * Put JAVA_HOME\bin and MAVEN_HOME\bin on environment variable Path
 * Clone application: git clone https://github.com/thiagoprocaci/javaws.git
-* Execute "mvn install" on root project folder
+* Execute "mvn install" on project root folder
 * Execute "mvn tomcat6:run -P tomcat" on root folder to run the application
 * Go to http://localhost:8080/javaws/person.svc
 
