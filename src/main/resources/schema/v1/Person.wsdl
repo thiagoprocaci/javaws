@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions name="Person"
+                  targetNamespace="http://tbp.com/wsdl/v1"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:tns="http://tbp.com/wsdl/v1"
+                  xmlns:elements="http://tbp.com/elements/v1"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+        Version 1.0
+    </wsdl:documentation>
+
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://tbp.com/elements/v1" schemaLocation="Elements.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <!--
+        findCambio
+    -->
+    <wsdl:message name="msgFindPersonByExampleRequest">
+        <wsdl:part element="elements:FindPersonByExampleRequest" name="FindPersonByExampleRequest"/>
+    </wsdl:message>
+    <wsdl:message name="msgFindPersonByExampleResponse">
+        <wsdl:part element="elements:FindPersonByExampleResponse" name="FindPersonByExampleResponse"/>
+    </wsdl:message>
+
+    <!--
+        portType
+    -->
+    <wsdl:portType name="PersonInterface">
+        <wsdl:operation name="findPersonByExample">
+            <wsdl:input message="tns:msgFindPersonByExampleRequest"/>
+            <wsdl:output message="tns:msgFindPersonByExampleResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <!--
+        binding
+    -->
+    <wsdl:binding name="PersonSOAP" type="tns:PersonInterface">
+        <soap:binding style="document"
+                      transport="http://schemas.xmlsoap.org/soap/http"/>
+
+        <wsdl:operation name="findPersonByExample">
+            <soap:operation soapAction="tns:findPersonByExample"/>
+            <wsdl:input>
+                <soap:body parts="FindPersonByExampleRequest" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="FindPersonByExampleResponse" use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+
+    </wsdl:binding>
+
+    <wsdl:service name="PersonService">
+        <wsdl:port name="PersonSOAPPort" binding="tns:PersonSOAP">
+            <soap:address location="http://localhost:8080/javaws/person.svc"/>
+        </wsdl:port>
+    </wsdl:service>
+
+</wsdl:definitions>

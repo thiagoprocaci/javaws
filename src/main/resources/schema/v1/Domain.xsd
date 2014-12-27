@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://tbp.com/domain/v1"
+        xmlns:domain="http://tbp.com/domain/v1"
+        elementFormDefault="qualified" version="1.0">
+
+
+    <complexType name="Person">
+         <sequence>
+             <element name="id" maxOccurs="1" minOccurs="0" type="long" />
+             <element name="name" maxOccurs="1" minOccurs="0"  type="string" />
+             <element name="address" maxOccurs="1" minOccurs="0" type="domain:Address"/>
+         </sequence>
+    </complexType>
+
+    <complexType name="Address">
+        <sequence>
+            <element name="street" maxOccurs="1" minOccurs="0" type="string" />
+            <element name="number" maxOccurs="1" minOccurs="0" type="int" />
+            <element name="city" maxOccurs="1" minOccurs="0" type="domain:City" />
+        </sequence>
+    </complexType>
+
+    <complexType name="Country">
+        <sequence>
+            <element name="id" maxOccurs="1" minOccurs="0" type="long" />
+            <element name="name" maxOccurs="1" minOccurs="0" type="string" />
+        </sequence>
+    </complexType>
+
+    <complexType name="City">
+        <sequence>
+            <element name="id" maxOccurs="1" minOccurs="0" type="long" />
+            <element name="name" maxOccurs="1" minOccurs="0" type="string" />
+            <element name="population" maxOccurs="1" minOccurs="0" type="int" />
+            <element name="country" maxOccurs="1" minOccurs="0" type="domain:Country" />
+        </sequence>
+    </complexType>
+
+</schema>

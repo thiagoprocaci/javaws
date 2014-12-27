@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:domain="http://tbp.com/domain/v1"
+           xmlns:tns="http://tbp.com/elements/v1"
+           targetNamespace="http://tbp.com/elements/v1"
+           elementFormDefault="qualified"
+           version="3.0">
+
+    <xs:import namespace="http://tbp.com/domain/v1" schemaLocation="Domain.xsd"/>
+
+
+    <xs:complexType name="FindPersonByExampleRequestType">
+        <xs:sequence>
+            <xs:element name="person" type="domain:Person"> </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="FindPersonByExampleRequest" type="tns:FindPersonByExampleRequestType"> </xs:element>
+
+    <xs:complexType name="FindPersonByExampleResponseType">
+        <xs:sequence>
+            <xs:element name="personList" type="domain:Person" minOccurs="0" maxOccurs="unbounded">
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="FindPersonByExampleResponse" type="tns:FindPersonByExampleResponseType"> </xs:element>
+
+
+
+
+
+
+</xs:schema>
